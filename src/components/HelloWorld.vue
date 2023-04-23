@@ -1,43 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { defineProps } from 'vue'
 
-defineProps<{ msg: string }>()
-async function getCurrentTab() {
-  let queryOptions = { active: true};
-  let [tab] = await chrome.tabs.query(queryOptions);
-  return tab;
+defineProps<{
+  msg: string
+}>()
+
+function tmp() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs: chrome.tabs.Tab[]) {
+    // `tabs` is an array of Tab objects representing the currently active tabs
+    const activeTab = tabs[0]
+    console.log(activeTab)
+
+    chrome.scripting.executeScript({
+      target: { tabId: activeTab.id ?? 0 },
+      func: () => console.log('Hello world!')
+    })
+  })
 }
-
-const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+  <div class="greetings">
+    <h1 class="green">{{ msg }}</h1>
+    <button @click="tmp">Click me</button>
   </div>
-  <button @click="getCurrentTab">Click me</button>
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
-
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
