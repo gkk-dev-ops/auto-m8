@@ -4,8 +4,10 @@
     class="absolute right-0 top-0 flex h-screen w-full flex-col items-center justify-center bg-black opacity-20"
   />
   <div class="absolute left-9 top-28">
-    <div class="popup dark:border-light-100 bg-base-light-100 p-5 text-black dark:bg-base-dark rounded">
-        <slot></slot>
+    <div
+      class="popup dark:border-light-100 rounded bg-base-light-100 p-5 text-black dark:bg-base-dark"
+    >
+      <slot></slot>
     </div>
   </div>
 </template>

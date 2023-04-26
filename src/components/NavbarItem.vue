@@ -2,7 +2,7 @@
 import AddAutomationPopup from './popups/AddAutomationPopup.vue'
 import { RouterLink } from 'vue-router'
 import { useDark, useToggle } from '@vueuse/core'
-import {ref } from 'vue'
+import { ref } from 'vue'
 
 const isDark = useDark()
 const isAddPopUpVisible = ref(false)
@@ -14,7 +14,7 @@ function openAddAutomationPopup() {
 }
 </script>
 <template>
-  <AddAutomationPopup @close="openAddAutomationPopup" v-if="isAddPopUpVisible"/>
+  <AddAutomationPopup @close="openAddAutomationPopup" v-if="isAddPopUpVisible" />
   <div class="flex flex-col">
     <div class="flex flex-row justify-between">
       <div><h1 class="text-2xl dark:text-accent">AUTO M8</h1></div>

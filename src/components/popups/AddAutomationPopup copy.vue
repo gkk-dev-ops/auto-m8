@@ -10,8 +10,12 @@ const automationCode = ref('')
 const automationsStore = useAutomationsStore()
 
 function submitAutomation() {
-  console.log("submitAutomation")
-  automationsStore.setAutomation(automationName.value, automationDescription.value, automationCode.value)
+  console.log('submitAutomation')
+  automationsStore.setAutomation(
+    automationName.value,
+    automationDescription.value,
+    automationCode.value
+  )
   emit('close')
 }
 </script>
@@ -21,7 +25,9 @@ function submitAutomation() {
     class="absolute right-0 top-0 flex h-screen w-full flex-col items-center justify-center bg-black opacity-20"
   />
   <div class="absolute left-9 top-28">
-    <div class="popup dark:border-light-100 bg-base-light-100 p-5 text-black dark:bg-base-dark rounded">
+    <div
+      class="popup dark:border-light-100 rounded bg-base-light-100 p-5 text-black dark:bg-base-dark"
+    >
       <h2 class="text-base dark:text-accent">Add m8:</h2>
       <div class="mx-2 my-1">
         <p class="my-1 text-xs dark:text-accent">Name</p>
@@ -37,7 +43,7 @@ function submitAutomation() {
         <textarea
           v-model="automationDescription"
           class="h-10 w-full resize-none rounded p-1 dark:border dark:border-accent dark:text-accent"
-          placeholder='Describe what does it do...'
+          placeholder="Describe what does it do..."
         />
       </div>
       <div class="mx-2 my-1">
@@ -45,11 +51,16 @@ function submitAutomation() {
         <textarea
           v-model="automationCode"
           class="h-10 w-full rounded p-1 dark:border dark:border-accent dark:text-accent"
-          placeholder='Write the code you want to execute...'
+          placeholder="Write the code you want to execute..."
         />
       </div>
       <div class="mx-2 my-4">
-        <button @click="submitAutomation" class="flex justify-center items-center rounded-lg bg-accent dark:bg-base-light-200 w-full h-4 hover:opacity-90"><img class="h-3 w-3" src="@/assets/plus.svg"></button>
+        <button
+          @click="submitAutomation"
+          class="flex h-4 w-full items-center justify-center rounded-lg bg-accent hover:opacity-90 dark:bg-base-light-200"
+        >
+          <img class="h-3 w-3" src="@/assets/plus.svg" />
+        </button>
       </div>
     </div>
   </div>

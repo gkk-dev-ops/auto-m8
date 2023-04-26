@@ -19,26 +19,14 @@ function toogleCode() {
 function toogleDescription() {
   showDescription.value = !showDescription.value
 }
-// function tmp() {
-//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs: chrome.tabs.Tab[]) {
-//     const activeTab = tabs[0]
-//     chrome.scripting.executeScript({
-//       target: { tabId: activeTab.id ?? 0 },
-//       func: () => console.log()
-//     })
-//   })
-// }
+
 function tmp() {
   const code = props.automationItem.code.toString()
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs: chrome.tabs.Tab[]) {
     const activeTab = tabs[0]
-    chrome.scripting.executeScript({
-      target: { tabId: activeTab.id ?? 0 },
-      func: () => new Function(code)
-    })
+    chrome.tabs.executeScript(activeTab.id ?? 0, { code: code })
   })
 }
-
 </script>
 <template>
   <div
