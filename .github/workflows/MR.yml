@@ -25,7 +25,6 @@ jobs:
         run: npm run build
       - name: Archive Extension
         run: |
-          mkdir dist
           zip -r dist/extension.zip dist/*
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
