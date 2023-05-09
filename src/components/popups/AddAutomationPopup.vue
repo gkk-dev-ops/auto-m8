@@ -11,7 +11,6 @@ const automationCode = ref('')
 const automationsStore = useAutomationsStore()
 
 function submitAutomation() {
-  console.log('submitAutomation')
   automationsStore.setAutomation(
     automationName.value,
     automationDescription.value,
