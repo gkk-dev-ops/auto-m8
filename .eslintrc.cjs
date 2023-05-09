@@ -15,5 +15,8 @@ module.exports = {
   env: {
     // ...
     "webextensions": true
+},
+rules: {
+  "no-console": "warn",
 }
 }
