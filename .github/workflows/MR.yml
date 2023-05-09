@@ -32,4 +32,4 @@ jobs:
           name: extension
           path: dist/extension.zip
       - name: Run Unit Tests
-        run: npm run test:unti
+        run: npm run test:unit
