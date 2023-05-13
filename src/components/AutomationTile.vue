@@ -20,7 +20,7 @@ function toogleDescription() {
   showDescription.value = !showDescription.value
 }
 
-function tmp() {
+function injectCode() {
   const code = props.automationItem.code.toString()
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs: chrome.tabs.Tab[]) {
     const activeTab = tabs[0]
@@ -41,7 +41,7 @@ function tmp() {
     </div>
     <div class="flex flex-row gap-2">
       <div
-        @click="tmp"
+        @click="injectCode"
         class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle dark:bg-base-light-200"
       >
         <img class="w-4" src="../assets/car.svg" />
@@ -51,20 +51,12 @@ function tmp() {
         class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle dark:bg-base-light-200"
       >
         <img class="w-4" src="../assets/info.svg" />
-        <popupSkeleton v-if="showDescription">
-          <p class="text-2xl dark:text-accent">Automation description</p>
-          <p>{{ props.automationItem.description }}</p>
-        </popupSkeleton>
       </div>
       <div
         @click="toogleCode"
         class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle dark:bg-base-light-200"
       >
         <img class="w-4" src="../assets/code.svg" />
-        <popupSkeleton v-if="showCode">
-          <p class="text-2xl dark:text-accent">Automation code</p>
-          <p>{{ props.automationItem.code }}</p>
-        </popupSkeleton>
       </div>
       <div
         @click="automationsStore.removeAutomation(props.automationItem.name)"
@@ -73,5 +65,14 @@ function tmp() {
         <img class="w-4" src="../assets/trash.svg" />
       </div>
     </div>
+
+    <popupSkeleton v-if="showCode" @close="toogleCode">
+      <p class="text-2xl dark:text-accent">Automation code</p>
+      <p class="dark:text-accent">{{ props.automationItem.code }}</p>
+    </popupSkeleton>
+    <popupSkeleton v-if="showDescription" @close="toogleDescription">
+      <p class="text-2xl dark:text-accent">Automation description</p>
+      <p class="dark:text-accent">{{ props.automationItem.description }}</p>
+    </popupSkeleton>
   </div>
 </template>

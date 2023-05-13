@@ -7,7 +7,9 @@ const automationsCount = ref(automationsStore.amountOfAutomations)
 </script>
 <template>
   <div v-if="!automationsCount">
-    <p class="my-4 text-sm dark:text-base-light-200 t-no-automations">No automations currently available...</p>
+    <p class="t-no-automations my-4 text-sm dark:text-base-light-200">
+      No automations currently available...
+    </p>
   </div>
   <div v-else class="mx-5 my-4 flex flex-col gap-2">
     <div v-for="automation in automationsStore.automations" :key="automation.name">
