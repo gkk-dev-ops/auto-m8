@@ -37,32 +37,11 @@ function scriptResult(results: any[]) {
 </script>
 <template>
   <div
-    class="
-      flex
-      h-11
-      w-80
-      flex-row
-      items-center
-      justify-between
-      rounded
-      bg-base-light-200
-      px-4
-      dark:bg-accent
-    "
+    class="flex h-11 w-80 flex-row items-center justify-between rounded bg-base-light-200 px-4 dark:bg-accent"
   >
     <div>
       <div
-        class="
-          max-w-36
-          flex
-          h-7
-          items-center
-          rounded-lg
-          bg-accent
-          p-2
-          text-center
-          dark:bg-base-light-200
-        "
+        class="max-w-36 flex h-7 items-center rounded-lg bg-accent p-2 text-center dark:bg-base-light-200"
       >
         <p>{{ cutAtLength(props.automationItem.name, 21) }}</p>
       </div>
@@ -72,39 +51,16 @@ function scriptResult(results: any[]) {
         tabindex="0"
         @keypress="injectCode"
         @click="injectCode"
-        class="
-          flex
-          h-7
-          w-7
-          items-center
-          cursor-pointer
-          justify-center
-          rounded-lg
-          hover:opacity-80
-          bg-accent
-          align-middle
-          dark:bg-base-light-200
-        "
+        class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg bg-accent align-middle hover:opacity-80 dark:bg-base-light-200"
       >
         <img v-if="!isRunningScript" class="w-4" src="../assets/car.svg" />
-        <img v-else class="w-4 h-4 animate-spin" src="../assets/spinner.svg" />
+        <img v-else class="h-4 w-4 animate-spin" src="../assets/spinner.svg" />
       </div>
       <div
         tabindex="0"
         @keypress="toogleDescription"
         @click="toogleDescription"
-        class="
-          flex
-          h-7
-          w-7
-          cursor-pointer
-          justify-center
-          rounded-lg
-          hover:opacity-80
-          bg-accent
-          align-middle
-          dark:bg-base-light-200
-        "
+        class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle hover:opacity-80 dark:bg-base-light-200"
       >
         <img class="w-4" src="../assets/info.svg" />
       </div>
@@ -112,18 +68,7 @@ function scriptResult(results: any[]) {
         tabindex="0"
         @keypress="toogleCode"
         @click="toogleCode"
-        class="
-          flex
-          h-7
-          w-7
-          cursor-pointer
-          justify-center
-          rounded-lg
-          hover:opacity-80
-          bg-accent
-          align-middle
-          dark:bg-base-light-200
-        "
+        class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle hover:opacity-80 dark:bg-base-light-200"
       >
         <img class="w-4" src="../assets/code.svg" />
       </div>
@@ -131,18 +76,7 @@ function scriptResult(results: any[]) {
         tabindex="0"
         @keypress="automationsStore.removeAutomation(props.automationItem.name)"
         @click="automationsStore.removeAutomation(props.automationItem.name)"
-        class="
-          flex
-          h-7
-          w-7
-          cursor-pointer
-          justify-center
-          rounded-lg
-          hover:opacity-80
-          bg-accent
-          align-middle
-          dark:bg-base-light-200
-        "
+        class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle hover:opacity-80 dark:bg-base-light-200"
       >
         <img class="w-4" src="../assets/trash.svg" />
       </div>

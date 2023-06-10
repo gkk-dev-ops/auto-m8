@@ -2,7 +2,7 @@
 import { defineEmits, reactive } from 'vue'
 import { useAutomationsStore } from '@/stores/automations'
 import popupSkeleton from './popupSkeleton.vue'
-import type {automationItem} from '@/types/types'
+import type { automationItem } from '@/types/types'
 
 const emit = defineEmits<{
   (e: 'close'): void
@@ -24,7 +24,7 @@ function submitAutomation() {
 <template>
   <popupSkeleton @close="$emit('close')">
     <div class="mx-2 mb-1">
-      <p class="text-base dark:text-accent mb-4">Add m8:</p>
+      <p class="mb-4 text-base dark:text-accent">Add m8:</p>
       <p class="my-1 text-xs dark:text-accent">Name</p>
       <input
         v-model="automation.name"
@@ -45,7 +45,7 @@ function submitAutomation() {
       <p class="my-1 text-xs dark:text-accent">Code</p>
       <textarea
         v-model="automation.code"
-        class="h-10 min-h-10 max-h-52 w-full rounded p-1 dark:border dark:border-accent dark:text-accent"
+        class="min-h-10 h-10 max-h-52 w-full rounded p-1 dark:border dark:border-accent dark:text-accent"
         placeholder="Write the code you want to execute..."
       />
     </div>

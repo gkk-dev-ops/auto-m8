@@ -22,18 +22,7 @@ function toggleAddAutomationPopup() {
           tabindex="0"
           @click="toggleDark()"
           @keypress="toggleDark()"
-          class="
-            flex
-            h-7
-            hover:opacity-80
-            w-7
-            cursor-pointer
-            justify-center
-            rounded-lg
-            bg-accent
-            align-middle
-            dark:bg-base-light-200
-          "
+          class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle hover:opacity-80 dark:bg-base-light-200"
         >
           <img class="w-4" src="../assets/sun.svg" />
         </div>
@@ -41,18 +30,7 @@ function toggleAddAutomationPopup() {
           tabindex="0"
           @keypress="toggleAddAutomationPopup"
           @click="toggleAddAutomationPopup"
-          class="
-            flex
-            h-7
-            w-7
-            hover:opacity-80
-            cursor-pointer
-            justify-center
-            rounded-lg
-            bg-accent
-            align-middle
-            dark:bg-base-light-200
-          "
+          class="flex h-7 w-7 cursor-pointer justify-center rounded-lg bg-accent align-middle hover:opacity-80 dark:bg-base-light-200"
         >
           <img class="w-4" src="../assets/plus.svg" />
         </div>

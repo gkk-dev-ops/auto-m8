@@ -9,13 +9,13 @@ const isDark = useDark()
   <div class="absolute left-9 top-28">
     <div
       class="popup dark:border-light-100 rounded bg-base-light-100 p-5 text-black dark:bg-base-dark"
-      >
+    >
       <img
-      class="ml-auto w-4 cursor-pointer"
-      :src="`/assets/close${isDark.valueOf() ? '-accent':  ''}.svg`"
-      @click="$emit('close')"
-      @keypress="$emit('close')"
-      tabindex="0"
+        class="ml-auto w-4 cursor-pointer"
+        :src="`/assets/close${isDark.valueOf() ? '-accent' : ''}.svg`"
+        @click="$emit('close')"
+        @keypress="$emit('close')"
+        tabindex="0"
       />
       <div class="m-[-16px] mx-1">
         <slot></slot>

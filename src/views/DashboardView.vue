@@ -2,7 +2,6 @@
 import AutomationTile from '../components/AutomationTile.vue'
 import { useAutomationsStore } from '@/stores/automations'
 const automationsStore = useAutomationsStore()
-
 </script>
 <template>
   <div v-if="!automationsStore.automations.length">
