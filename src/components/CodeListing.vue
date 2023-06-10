@@ -1,9 +1,9 @@
 <template>
-  <pre
-    e
-    class="p-4 bg-gray-800 text-white rounded-md overflow-auto w-full"
+    <img src="@/assets/copy.svg" class="absolute p-1 top-16 right-8 cursor-pointer rounded hover:opacity-80 hover:bg-base-light-200/60 z-10" @click="copyCode">
+    <pre
+    class="p-4 pt-8 bg-gray-800 text-white rounded-md overflow-auto w-full"
     v-html="highlightedCode"
-  ></pre>
+    />
 </template>
 
 <script lang="ts">
@@ -29,9 +29,11 @@ export default {
     watch(() => props.code, highlightCode, { immediate: true })
 
     onMounted(highlightCode)
-
+    function copyCode() {
+    navigator.clipboard.writeText(props.code)
+    }
     return {
-      highlightedCode
+      highlightedCode, copyCode
     }
   }
 }
