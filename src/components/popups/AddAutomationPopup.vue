@@ -1,31 +1,33 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue'
+import { defineEmits, reactive } from 'vue'
 import { useAutomationsStore } from '@/stores/automations'
 import popupSkeleton from './popupSkeleton.vue'
+import type {automationItem} from '@/types/types'
+
 const emit = defineEmits<{
   (e: 'close'): void
 }>()
-const automationName = ref('')
-const automationDescription = ref('')
-const automationCode = ref('')
 const automationsStore = useAutomationsStore()
+const automation: automationItem = reactive({
+  name: '',
+  description: '',
+  code: ''
+})
 
 function submitAutomation() {
-  automationsStore.setAutomation(
-    automationName.value,
-    automationDescription.value,
-    automationCode.value
-  )
+  Object.values(automation).includes('')
+    ? alert('Please fill all the fields')
+    : automationsStore.setAutomation(automation)
   emit('close')
 }
 </script>
 <template>
-  <popupSkeleton>
-    <h2 class="text-base dark:text-accent">Add m8:</h2>
-    <div class="mx-2 my-1">
+  <popupSkeleton @close="$emit('close')">
+    <div class="mx-2 mb-1">
+      <p class="text-base dark:text-accent mb-4">Add m8:</p>
       <p class="my-1 text-xs dark:text-accent">Name</p>
       <input
-        v-model="automationName"
+        v-model="automation.name"
         class="h-5 w-full rounded p-3 dark:border dark:border-accent dark:text-accent"
         type="text"
         placeholder="Name your automation..."
@@ -34,7 +36,7 @@ function submitAutomation() {
     <div class="mx-2 my-1">
       <p class="my-1 text-xs dark:text-accent">Description</p>
       <textarea
-        v-model="automationDescription"
+        v-model="automation.description"
         class="h-10 w-full resize-none rounded p-1 dark:border dark:border-accent dark:text-accent"
         placeholder="Describe what does it do..."
       />
@@ -42,8 +44,8 @@ function submitAutomation() {
     <div class="mx-2 my-1">
       <p class="my-1 text-xs dark:text-accent">Code</p>
       <textarea
-        v-model="automationCode"
-        class="h-10 w-full rounded p-1 dark:border dark:border-accent dark:text-accent"
+        v-model="automation.code"
+        class="h-10 min-h-10 max-h-52 w-full rounded p-1 dark:border dark:border-accent dark:text-accent"
         placeholder="Write the code you want to execute..."
       />
     </div>

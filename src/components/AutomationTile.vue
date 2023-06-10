@@ -69,6 +69,8 @@ function scriptResult(results: any[]) {
     </div>
     <div class="flex flex-row gap-2">
       <div
+        tabindex="0"
+        @keypress="injectCode"
         @click="injectCode"
         class="
           flex
@@ -88,6 +90,8 @@ function scriptResult(results: any[]) {
         <img v-else class="w-4 h-4 animate-spin" src="../assets/spinner.svg" />
       </div>
       <div
+        tabindex="0"
+        @keypress="toogleDescription"
         @click="toogleDescription"
         class="
           flex
@@ -105,6 +109,8 @@ function scriptResult(results: any[]) {
         <img class="w-4" src="../assets/info.svg" />
       </div>
       <div
+        tabindex="0"
+        @keypress="toogleCode"
         @click="toogleCode"
         class="
           flex
@@ -122,6 +128,8 @@ function scriptResult(results: any[]) {
         <img class="w-4" src="../assets/code.svg" />
       </div>
       <div
+        tabindex="0"
+        @keypress="automationsStore.removeAutomation(props.automationItem.name)"
         @click="automationsStore.removeAutomation(props.automationItem.name)"
         class="
           flex

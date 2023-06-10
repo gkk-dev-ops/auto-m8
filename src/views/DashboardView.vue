@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import AutomationTile from '../components/AutomationTile.vue'
 import { useAutomationsStore } from '@/stores/automations'
 const automationsStore = useAutomationsStore()
-const automationsCount = ref(automationsStore.amountOfAutomations)
+
 </script>
 <template>
-  <div v-if="!automationsCount">
+  <div v-if="!automationsStore.automations.length">
     <p class="t-no-automations my-4 text-sm dark:text-base-light-200">
       No automations currently available...
     </p>

@@ -9,20 +9,17 @@ const isDark = useDark()
   <div class="absolute left-9 top-28">
     <div
       class="popup dark:border-light-100 rounded bg-base-light-100 p-5 text-black dark:bg-base-dark"
-    >
+      >
       <img
-        v-if="isDark.valueOf()"
-        class="ml-auto w-4 cursor-pointer"
-        src="@/assets/close-accent.svg"
-        @click="$emit('close')"
+      class="ml-auto w-4 cursor-pointer"
+      :src="`/assets/close${isDark.valueOf() ? '-accent':  ''}.svg`"
+      @click="$emit('close')"
+      @keypress="$emit('close')"
+      tabindex="0"
       />
-      <img
-        v-else
-        class="ml-auto w-4 cursor-pointer"
-        src="@/assets/close.svg"
-        @click="$emit('close')"
-      />
-      <slot></slot>
+      <div class="m-[-16px] mx-1">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +27,6 @@ const isDark = useDark()
 <style scoped>
 .popup {
   width: 320px;
-  height: 270px;
+  min-height: 270px;
 }
 </style>

@@ -8,18 +8,20 @@ const isDark = useDark()
 const isAddPopUpVisible = ref(false)
 const toggleDark = useToggle(isDark)
 
-function openAddAutomationPopup() {
+function toggleAddAutomationPopup() {
   isAddPopUpVisible.value = !isAddPopUpVisible.value
 }
 </script>
 <template>
-  <AddAutomationPopup @close="openAddAutomationPopup" v-if="isAddPopUpVisible" />
+  <AddAutomationPopup @close="toggleAddAutomationPopup" v-if="isAddPopUpVisible" />
   <div class="flex flex-col">
     <div class="flex flex-row justify-between">
       <div class="mb-4"><h1 class="text-2xl dark:text-accent">AUTO M8</h1></div>
       <div class="flex flex-row gap-2">
         <div
+          tabindex="0"
           @click="toggleDark()"
+          @keypress="toggleDark()"
           class="
             flex
             h-7
@@ -36,7 +38,9 @@ function openAddAutomationPopup() {
           <img class="w-4" src="../assets/sun.svg" />
         </div>
         <div
-          @click="openAddAutomationPopup"
+          tabindex="0"
+          @keypress="toggleAddAutomationPopup"
+          @click="toggleAddAutomationPopup"
           class="
             flex
             h-7

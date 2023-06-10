@@ -1,4 +1,4 @@
-import { ref, type Ref, computed } from 'vue'
+import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { automationItem } from '@/types/types'
 
@@ -9,10 +9,9 @@ export const useAutomationsStore = defineStore('automations', () => {
     parsedAutomationsStorage = JSON.parse(automationsStorage)
   }
   const automations: Ref<Array<automationItem>> = ref(parsedAutomationsStorage)
-  const amountOfAutomations = computed(() => automations.value.length)
 
-  function setAutomation(name: string, description: string, code: string) {
-    automations.value.push({ name, description, code })
+  function setAutomation(item: automationItem) {
+    automations.value.push(item)
     localStorage.setItem('automations', JSON.stringify(automations.value))
   }
 
@@ -23,5 +22,5 @@ export const useAutomationsStore = defineStore('automations', () => {
     localStorage.setItem('automations', JSON.stringify(automations.value))
   }
 
-  return { automations, amountOfAutomations, setAutomation, removeAutomation }
+  return { automations, setAutomation, removeAutomation }
 })
